@@ -1,4 +1,4 @@
-package pl.msiwak.kmmproject.android
+package pl.msiwak.kmmproject.android.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
