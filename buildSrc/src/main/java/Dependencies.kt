@@ -13,4 +13,8 @@ object Deps {
         const val navigation = "io.insert-koin:koin-androidx-navigation:${Versions.koin}"
     }
 
+    object Firebase {
+        const val authentication = "dev.gitlive:firebase-auth:1.6.2"
+    }
+
 }

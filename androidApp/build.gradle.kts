@@ -3,6 +3,7 @@ import pl.msiwak.kmmproject.dependencies.Deps
 plugins {
     id("com.android.application")
     kotlin("android")
+    id ("com.google.gms.google-services")
 }
 
 android {
