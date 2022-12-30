@@ -6,16 +6,21 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
-import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import org.koin.java.KoinJavaComponent.inject
+import pl.msiwak.kmmproject.android.navigation.NavigationDirections
 import pl.msiwak.kmmproject.android.ui.register.RegisterScreen
 import pl.msiwak.kmmproject.android.ui.theme.BaseKmm_ProjectTheme
 import pl.msiwak.kmmproject.android.ui.welcome.WelcomeScreen
 
 class MainActivity : ComponentActivity() {
+
+    val viewModel: MainViewModel by inject(MainViewModel::class.java)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -25,10 +30,19 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     val navController = rememberNavController()
-                    NavHost(navController = navController, startDestination = "welcome") {
-                        composable("welcome") { WelcomeScreen(navController) }
-                        composable("register") { RegisterScreen() }
+                    NavHost(
+                        navController = navController,
+                        startDestination = NavigationDirections.Welcome.destination
+                    ) {
+                        composable(NavigationDirections.Welcome.destination) { WelcomeScreen() }
+                        composable(NavigationDirections.Registration.destination) { RegisterScreen() }
 
+                    }
+
+                    viewModel.mainNavigator.commands.collectAsState().value.also { command ->
+                        if (command.destination.isNotEmpty()) {
+                            navController.navigate(command.destination)
+                        }
                     }
                 }
             }

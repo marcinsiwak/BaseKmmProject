@@ -1,3 +1,5 @@
+import pl.msiwak.kmmproject.dependencies.Deps
+
 plugins {
     id("com.android.application")
     kotlin("android")
@@ -57,5 +59,10 @@ dependencies {
 
     val nav_version = "2.5.3"
     implementation("androidx.navigation:navigation-compose:$nav_version")
+
+    with(Deps.Koin) {
+        implementation(core)
+        implementation(android)
+    }
 
 }

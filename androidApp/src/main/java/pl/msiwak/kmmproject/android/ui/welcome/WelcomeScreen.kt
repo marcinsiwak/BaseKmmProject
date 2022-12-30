@@ -9,11 +9,11 @@ import androidx.navigation.NavHostController
 import org.koin.java.KoinJavaComponent.inject
 
 @Composable
-fun WelcomeScreen(navigator: NavHostController?) {
+fun WelcomeScreen() {
     val viewModel: WelcomeScreenViewModel by inject(WelcomeScreenViewModel::class.java)
     Column {
         Text(text = "Welcome screen: ${viewModel.title}")
-        Button(onClick = { navigator?.navigate("register") }) {
+        Button(onClick = { viewModel.navigateToRegistration() }) {
             Text(text = "OPEN REGISTRATION")
         }
     }
@@ -22,5 +22,5 @@ fun WelcomeScreen(navigator: NavHostController?) {
 @Preview
 @Composable
 fun WelcomeScreenPreview() {
-    WelcomeScreen(null)
+    WelcomeScreen()
 }

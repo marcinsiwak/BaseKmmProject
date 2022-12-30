@@ -10,6 +10,7 @@ object Deps {
         const val core = "io.insert-koin:koin-core:${Versions.koin}"
         const val test = "io.insert-koin:koin-test:${Versions.koin}"
         const val android = "io.insert-koin:koin-android:${Versions.koin}"
+        const val navigation = "io.insert-koin:koin-androidx-navigation:${Versions.koin}"
     }
 
 }
