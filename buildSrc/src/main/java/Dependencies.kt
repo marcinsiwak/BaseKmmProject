@@ -1,7 +1,7 @@
 package pl.msiwak.kmmproject.dependencies
 
 object Versions {
-    const val koin = "3.2.0"
+    const val koin = "3.3.2"
 }
 
 object Deps {
