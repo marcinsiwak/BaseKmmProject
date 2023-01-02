@@ -3,6 +3,7 @@ import shared
 
 struct ContentView: View {
 	let greet = Greeting().greeting()
+	let platform = Platform().platform
 
 	var body: some View {
 		Text(greet)
