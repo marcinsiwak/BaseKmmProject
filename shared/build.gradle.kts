@@ -15,6 +15,7 @@ kotlin {
     ).forEach {
         it.binaries.framework {
             baseName = "shared"
+            isStatic = true
         }
     }
 
@@ -25,9 +26,9 @@ kotlin {
                     api(core)
                     api(test)
                 }
-//                with(Deps.Firebase) {
-//                    api(authentication)
-//                }
+                with(Deps.Firebase) {
+                    api(authentication)
+                }
             }
         }
         val commonTest by getting {
@@ -45,6 +46,11 @@ kotlin {
             iosX64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
             iosSimulatorArm64Main.dependsOn(this)
+            dependencies {
+                with(Deps.Firebase) {
+                    api(authentication)
+                }
+            }
         }
         val iosX64Test by getting
         val iosArm64Test by getting
